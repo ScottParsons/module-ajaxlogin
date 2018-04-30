@@ -1,0 +1,26 @@
+<?php
+/*
+ * @package    SussexDev_AjaxLogin
+ * @copyright  Copyright (c) 2018 Scott Parsons
+ * @license    https://github.com/ScottParsons/module-ajaxlogin/blob/master/LICENSE.md
+ * @version    1.0.0
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var \Magento\Customer\Block\Account\AuthenticationPopup $block */
+?>
+
+<div id="ajaxlogin-popup" data-bind="scope:'ajaxLogin'" style="display: none;">
+    <script>
+        window.ajaxLogin = <?= /* @noEscape */ $block->getSerializedConfig() ?>;
+    </script>
+    <!-- ko template: getTemplate() --><!-- /ko -->
+    <script type="text/x-magento-init">
+        {
+            "#ajaxlogin-popup": {
+                "Magento_Ui/js/core/app": <?= /* @noEscape */ $block->getJsLayout() ?>
+            }
+        }
+    </script>
+</div>

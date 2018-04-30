@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!--
+/*
+ * @package    SussexDev_AjaxLogin
+ * @copyright  Copyright (c) 2018 Scott Parsons
+ * @license    https://github.com/ScottParsons/module-ajaxlogin/blob/master/LICENSE.md
+ * @version    1.0.0
+ */
+ -->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <!-- Blank theme -->
+        <referenceBlock name="authorization-link">
+            <arguments>
+                <argument name="class" xsi:type="string">trigger-ajax-login</argument>
+            </arguments>
+        </referenceBlock>
+
+        <!-- Luma -->
+        <referenceBlock name="authorization-link-login">
+            <arguments>
+                <argument name="class" xsi:type="string">trigger-ajax-login</argument>
+            </arguments>
+        </referenceBlock>
+
+        <referenceContainer name="content">
+            <block class="Magento\Customer\Block\Account\AuthenticationPopup" name="ajaxlogin-popup" as="ajaxlogin-popup"
+                   before="-" template="SussexDev_AjaxLogin::account/ajaxlogin-popup.phtml">
+                <arguments>
+                    <argument name="jsLayout" xsi:type="array">
+                        <item name="components" xsi:type="array">
+                            <item name="ajaxLogin" xsi:type="array">
+                                <item name="component" xsi:type="string">SussexDev_AjaxLogin/js/view/ajaxlogin-popup</item>
+                                <item name="children" xsi:type="array">
+                                    <item name="messages" xsi:type="array">
+                                        <item name="component" xsi:type="string">Magento_Ui/js/view/messages</item>
+                                        <item name="displayArea" xsi:type="string">messages</item>
+                                    </item>
+                                </item>
+                            </item>
+                        </item>
+                    </argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/*
+ * @package    SussexDev_AjaxLogin
+ * @copyright  Copyright (c) 2018 Scott Parsons
+ * @license    https://github.com/ScottParsons/module-ajaxlogin/blob/master/LICENSE.md
+ * @version    1.0.0
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+    <router id="standard">
+        <route id="ajaxlogin" frontName="ajaxlogin">
+            <module name="SussexDev_AjaxLogin" />
+        </route>
+    </router>
+</config>
