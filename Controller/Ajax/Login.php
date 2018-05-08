@@ -3,7 +3,7 @@
  * @package    SussexDev_AjaxLogin
  * @copyright  Copyright (c) 2018 Scott Parsons
  * @license    https://github.com/ScottParsons/module-ajaxlogin/blob/master/LICENSE.md
- * @version    1.0.0
+ * @version    1.1.0
  */
 namespace SussexDev\AjaxLogin\Controller\Ajax;
 
