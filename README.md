@@ -25,3 +25,5 @@ $ php bin/magento cache:clean
 ```
 
 ## Usage
+
+Head to ```Stores -> Configuration -> Customers -> Customer Configuration```, expand the ```Login Options``` section and enable the ```Enable Login Popup``` option.
