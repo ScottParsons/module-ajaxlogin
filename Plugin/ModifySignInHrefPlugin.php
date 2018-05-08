@@ -8,6 +8,7 @@
 namespace SussexDev\AjaxLogin\Plugin;
 
 use Magento\Customer\Model\Context;
+use SussexDev\AjaxLogin\Helper\Data as AjaxLoginHelper;
 
 class ModifySignInHrefPlugin
 {
@@ -19,15 +20,23 @@ class ModifySignInHrefPlugin
     protected $httpContext;
 
     /**
+     * @var AjaxLoginHelper
+     */
+    protected $helper;
+
+    /**
      * ModifySignInHrefPlugin constructor.
      *
      * @param \Magento\Framework\App\Http\Context $httpContext
+     * @param AjaxLoginHelper $helper
      */
     public function __construct(
-        \Magento\Framework\App\Http\Context $httpContext
+        \Magento\Framework\App\Http\Context $httpContext,
+        AjaxLoginHelper $helper
     )
     {
         $this->httpContext = $httpContext;
+        $this->helper = $helper;
     }
 
     /**
@@ -37,13 +46,17 @@ class ModifySignInHrefPlugin
      */
     public function afterGetHref(\Magento\Customer\Block\Account\AuthorizationLink $subject, $result)
     {
-        if (!$this->isLoggedIn()) {
-            $result = '#';
+        if ($this->helper->isModuleEnabled()) {
+            if (!$this->isLoggedIn()) {
+                $result = '#';
+            }
         }
         return $result;
     }
 
     /**
+     * Check if customer is logged in
+     *
      * @return bool
      */
     public function isLoggedIn()

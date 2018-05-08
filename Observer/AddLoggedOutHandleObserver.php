@@ -10,6 +10,7 @@ namespace SussexDev\AjaxLogin\Observer;
 use Magento\Customer\Model\Session;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
+use SussexDev\AjaxLogin\Helper\Data as AjaxLoginHelper;
 
 class AddLoggedOutHandleObserver implements ObserverInterface
 {
@@ -19,15 +20,23 @@ class AddLoggedOutHandleObserver implements ObserverInterface
     private $customerSession;
 
     /**
-     * AddCustomerHandlesObserver constructor.
+     * @var AjaxLoginHelper
+     */
+    private $helper;
+
+    /**
+     * AddLoggedOutHandleObserver constructor.
      *
      * @param Session $customerSession
+     * @param AjaxLoginHelper $helper
      */
     public function __construct(
-        Session $customerSession
+        Session $customerSession,
+        AjaxLoginHelper $helper
     )
     {
         $this->customerSession = $customerSession;
+        $this->helper = $helper;
     }
 
     /**
@@ -38,10 +47,11 @@ class AddLoggedOutHandleObserver implements ObserverInterface
      */
     public function execute(Observer $observer)
     {
-        $layout = $observer->getEvent()->getLayout();
-
-        if (!$this->customerSession->isLoggedIn()) {
-            $layout->getUpdate()->addHandle('ajaxlogin_customer_logged_out');
+        if ($this->helper->isModuleEnabled()) {
+            $layout = $observer->getEvent()->getLayout();
+            if (!$this->customerSession->isLoggedIn()) {
+                $layout->getUpdate()->addHandle('ajaxlogin_customer_logged_out');
+            }
         }
     }
 }
