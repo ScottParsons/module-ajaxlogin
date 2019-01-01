@@ -4,7 +4,7 @@
  * @package    SussexDev_AjaxLogin
  * @copyright  Copyright (c) 2019 Scott Parsons
  * @license    https://github.com/ScottParsons/module-ajaxlogin/blob/master/LICENSE.md
- * @version    1.1.0
+ * @version    1.1.1
  */
  -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
