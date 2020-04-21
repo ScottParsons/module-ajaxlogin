@@ -38,7 +38,7 @@ define([
                     callbacks.forEach(function (callback) {
                         callback(loginData);
                     });
-                    customerData.invalidate(['customer']);
+                    customerData.invalidate(['customer','cart']);
 
                     if (redirectUrl) {
                         window.location.href = redirectUrl;
